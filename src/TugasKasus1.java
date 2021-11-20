@@ -9,24 +9,20 @@ public class TugasKasus1 {
         String namapembeli;
         int hargaTotal, hargaSatuan, uangKembali, uangPembeli, jumlahBarang;
 
-
         Scanner eco = new Scanner(System.in);
         LocalDateTime waktu = LocalDateTime.now();
 
         DateTimeFormatter waktuNow = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String realWaktu = waktu.format(waktuNow);
 
-
         DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
         DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-
 
         formatRp.setCurrencySymbol("Rp. ");
         formatRp.setMonetaryDecimalSeparator(',');
         formatRp.setGroupingSeparator('.');
 
         kursIndonesia.setDecimalFormatSymbols(formatRp);
-
 
         System.out.println("=========================================================================");
         System.out.println("=                              FILKOM MART                              =");
@@ -43,7 +39,6 @@ public class TugasKasus1 {
 
         hargaTotal = jumlahBarang * hargaSatuan;
         uangKembali = uangPembeli - hargaTotal;
-
 
         System.out.println("=========================================================================");
         System.out.println("=                           STRUK  PEMBAYARAN                           =");
