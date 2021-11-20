@@ -1,0 +1,3 @@
+# Tugas Kuliah
+- Java
+- Python
