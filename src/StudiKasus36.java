@@ -5,6 +5,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Scanner;
 
+/** Program FILKOM EXPRESS
+ * Nama : Maulana Khoirusyifa
+ * NIM : 215150200111014
+ * Kelas : B
+ */
 public class StudiKasus36 {
     static Scanner input = new Scanner(System.in);
     static int maxCounter = 5;
@@ -303,11 +308,9 @@ public class StudiKasus36 {
         String rute = jarakk + " -> " + jarak + "km";
         String pesanan = kodePesanan + ";" + tanggalKeberangkatan + ";" + nomorKTP + ";" + nama + ";" + rute + ";" + tanggalKeberangkatan
                 + ";" + jenisTiket + ";" + jumlahTiket;
-
         if (counter == 5){
             counter = 0;
         }
-
         tickets[counter++] = pesanan;
 
 
@@ -338,13 +341,9 @@ public class StudiKasus36 {
     }
 
     public static void Menu5() {
-
-
         System.out.println("--------------------------------------------------");
         System.out.println("Cek Pemesanan Tiket");
         System.out.println("--------------------------------------------------");
-
-
                 System.out.print("Masukkan ID Pesanan Anda :");
                 String idPesanan = input.nextLine();
                 System.out.print("Masukkan Nomor KTP Anda :");
@@ -371,7 +370,5 @@ public class StudiKasus36 {
             }
         }
     }
-
-
 }
 
