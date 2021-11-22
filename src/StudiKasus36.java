@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+
 /** Program FILKOM EXPRESS
  * Nama : Maulana Khoirusyifa
  * NIM : 215150200111014
@@ -17,7 +18,6 @@ public class StudiKasus36 {
     static LocalDateTime currentDate = LocalDateTime.now();
     //sistem uang
     static DecimalFormat kursIndo = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-
 
 
     public static void main(String[] args) {
@@ -57,8 +57,8 @@ public class StudiKasus36 {
         } while (pilihan != 6);
     }
 
-      public static void Menu1() {
-        String nama, nomorKTP, nomorTelepon, alamat, tanggalKeberangkatan, stasiunAsal, stasiunTujuan, jenisTiket,kodeJTiket;
+    public static void Menu1() {
+        String nama, nomorKTP, nomorTelepon, alamat, tanggalKeberangkatan, stasiunAsal, stasiunTujuan, jenisTiket, kodeJTiket;
         String kodeNIK;
         String kodeSA = null;
         String kodeST = null;
@@ -130,37 +130,57 @@ public class StudiKasus36 {
         kodeNIK = nomorKTP.substring(13, 16);
 
         //kode stasiun
-          switch (stasiunAsal) {
-              case "Malang" -> kodeSA = "MLG";
-              case "Jakarta" -> kodeSA = "JKT";
-              case "Surabaya" -> kodeSA = "SBY";
-              case "Bandung" -> kodeSA = "BDG";
-              case "Semarang" -> kodeSA = "SMR";
-              case "Yogyakarta" -> kodeSA = "YOG";
-              case "Serang" -> kodeSA = "SRG";
-              default -> {
-              }
-          }
+        switch (stasiunAsal) {
+            case "Malang" -> kodeSA = "MLG";
+            case "Jakarta" -> kodeSA = "JKT";
+            case "Surabaya" -> kodeSA = "SBY";
+            case "Bandung" -> kodeSA = "BDG";
+            case "Semarang" -> kodeSA = "SMR";
+            case "Yogyakarta" -> kodeSA = "YOG";
+            case "Serang" -> kodeSA = "SRG";
+            default -> {
+            }
+        }
 
-          switch (stasiunTujuan) {
-              case "Malang" -> kodeST = "MLG";
-              case "Jakarta" -> kodeST = "JKT";
-              case "Surabaya" -> kodeST = "SBY";
-              case "Bandung" -> kodeST = "BDG";
-              case "Semarang" -> kodeST = "SMR";
-              case "Yogyakarta" -> kodeST = "YOG";
-              case "Serang" -> kodeST = "SRG";
-              default -> {
-              }
-          }
+        switch (stasiunTujuan) {
+            case "Malang" -> kodeST = "MLG";
+            case "Jakarta" -> kodeST = "JKT";
+            case "Surabaya" -> kodeST = "SBY";
+            case "Bandung" -> kodeST = "BDG";
+            case "Semarang" -> kodeST = "SMR";
+            case "Yogyakarta" -> kodeST = "YOG";
+            case "Serang" -> kodeST = "SRG";
+            default -> {
+            }
+        }
 
-          switch (jenisTiket) {
-              case "Hijau" -> kodeTiket = "01";
-              case "Kuning" -> kodeTiket = "02";
-              case "Merah" -> kodeTiket = "03";
-              default -> {
-              }
-          }
+            switch (jenisTiket) {
+                case "Hijau" -> kodeTiket = "01";
+                case "Kuning" -> kodeTiket = "02";
+                case "Merah" -> kodeTiket = "03";
+                default -> {
+                    do {
+                        System.out.println("Mohon maaf, jenis tiket " + jenisTiket + " tidak tersedia");
+                        System.out.println("1. Membatalkan pesanan");
+                        System.out.println("2. Memasukkan ulang jenis tiket");
+                        System.out.println("Masukkan pilihan anda :");
+                        int pilihJtiket = input.nextInt();
+                        input.nextLine();
+                        switch (pilihJtiket) {
+                            case 1 -> MenuUtama();
+                            case 2 -> {
+                                System.out.print("Jenis Tiket\t\t\t\t:");
+                                jenisTiket = input.nextLine();
+                                switch (jenisTiket) {
+                                    case "Hijau" -> kodeTiket = "01";
+                                    case "Kuning" -> kodeTiket = "02";
+                                    case "Merah" -> kodeTiket = "03";
+                                }
+                            }
+                        }
+                    }while (jenisTiket.equals("Hijau|Kuning|Merah"));
+            }
+        }
 
         if (jumlahTiket < 10) {
             kodeJTiket = "00" + jumlahTiket;
@@ -171,35 +191,35 @@ public class StudiKasus36 {
 
         int malang = 0, sura = 100, yogya = 400, semarang = 450, bandung = 800, jakarta = 900, serang = 1000;
         int stasiun1, stasiun2;
-          stasiun1 = switch (stasiunAsal) {
-              case "Malang" -> malang;
-              case "Surabaya" -> sura;
-              case "Yogyakarta" -> yogya;
-              case "Semarang" -> semarang;
-              case "Bandung" -> bandung;
-              case "Jakarta" -> jakarta;
-              case "Serang" -> serang;
-              default -> 0;
-          };
+        stasiun1 = switch (stasiunAsal) {
+            case "Malang" -> malang;
+            case "Surabaya" -> sura;
+            case "Yogyakarta" -> yogya;
+            case "Semarang" -> semarang;
+            case "Bandung" -> bandung;
+            case "Jakarta" -> jakarta;
+            case "Serang" -> serang;
+            default -> 0;
+        };
 
-          stasiun2 = switch (stasiunTujuan) {
-              case "Malang" -> malang;
-              case "Surabaya" -> sura;
-              case "Yogyakarta" -> yogya;
-              case "Semarang" -> semarang;
-              case "Bandung" -> bandung;
-              case "Jakarta" -> jakarta;
-              case "Serang" -> serang;
-              default -> 0;
-          };
+        stasiun2 = switch (stasiunTujuan) {
+            case "Malang" -> malang;
+            case "Surabaya" -> sura;
+            case "Yogyakarta" -> yogya;
+            case "Semarang" -> semarang;
+            case "Bandung" -> bandung;
+            case "Jakarta" -> jakarta;
+            case "Serang" -> serang;
+            default -> 0;
+        };
         String jarakk = stasiunAsal + "-" + stasiunTujuan;
         jarak = Math.abs(stasiun2 - stasiun1);
         //program jenis tiket
-          switch (jenisTiket) {
-              case "Hijau" -> hargaTiket = (4400 / 10) * jarak;
-              case "Kuning" -> hargaTiket = (7100 / 10) * jarak;
-              case "Merah" -> hargaTiket = (10000 / 10) * jarak;
-          }
+        switch (jenisTiket) {
+            case "Hijau" -> hargaTiket = (4400 / 10) * jarak;
+            case "Kuning" -> hargaTiket = (7100 / 10) * jarak;
+            case "Merah" -> hargaTiket = (10000 / 10) * jarak;
+        }
 
         //Perhitungan final dan diskon
         totalHarga = hargaTiket * jumlahTiket;
@@ -234,7 +254,7 @@ public class StudiKasus36 {
 
         int hargaSebenarnya = (totalHarga - diskon);
         kembalian = nominalPembayaran - hargaSebenarnya;
-
+        String kodePesanan = kodeSA + "-" + kodeST + kodeTiket + kodeNIK + kodeJTiket;
         if (nominalPembayaran >= (totalHarga - diskon)) {
             System.out.println("Pemesanan Tiket Berhasil !");
 
@@ -242,7 +262,7 @@ public class StudiKasus36 {
             System.out.println("==================================================");
             System.out.println("                 DETAIL PEMESANAN                 ");
             System.out.println("==================================================");
-            System.out.printf("%s %s\n", "ID\t\t\t\t\t\t:", kodeSA + "-" + kodeST + kodeTiket + kodeNIK + kodeJTiket);
+            System.out.printf("%s %s\n", "ID\t\t\t\t\t\t:", kodePesanan);
             System.out.println("Nama\t\t\t\t\t: " + nama);
             System.out.println("KTP\t\t\t\t\t\t: " + nomorKTP);
             System.out.println("Alamat\t\t\t\t\t: " + alamat);
@@ -263,58 +283,53 @@ public class StudiKasus36 {
             System.out.println("==================================================");
 
         } else {
-
-            //Program uang tidak cukup
-            System.out.println("Maaf, uang Anda tidak mencukupi untuk melakukan pembayaran sebesar " + kursIndo.format(Math.abs(kembalian)) + "!");
-            System.out.println("1. Membatalkan pesanan");
-            System.out.println("2. Mengulangi pembayaran");
-            System.out.println("Masukkan pilihan anda :");
-            int pilihanGagalBayar = input.nextInt();
-            switch (pilihanGagalBayar) {
-                case 1 -> MenuUtama();
-                case 2 -> {
+            do {
+                //Program uang tidak cukup
+                System.out.println("Maaf, uang Anda tidak mencukupi untuk melakukan pembayaran sebesar " + kursIndo.format(Math.abs(kembalian)) + "!");
+                System.out.println("1. Membatalkan pesanan");
+                System.out.println("2. Mengulangi pembayaran");
+                System.out.println("Masukkan pilihan anda :");
+                int pilihanGagalBayar = input.nextInt();
+                switch (pilihanGagalBayar) {
+                    case 1 -> MenuUtama();
+                    case 2 -> {
                         System.out.print("Nominal Pembayaran\t\t:");
                         nominalPembayaran = input.nextInt();
                         kembalian = nominalPembayaran - (totalHarga - diskon);
 
-                    if (nominalPembayaran >= (totalHarga - diskon)) {
-                        System.out.println("Pemesanan Tiket Berhasil !");
+                            //Program Output Tiket
+                            System.out.println("==================================================");
+                            System.out.println("                 DETAIL PEMESANAN                 ");
+                            System.out.println("==================================================");
+                            System.out.printf("%s %s\n", "ID\t\t\t\t\t\t:", kodePesanan);
+                            System.out.println("Nama\t\t\t\t\t: " + nama);
+                            System.out.println("KTP\t\t\t\t\t\t: " + nomorKTP);
+                            System.out.println("Alamat\t\t\t\t\t: " + alamat);
+                            System.out.println("Nomor Telepon\t\t\t: " + nomorTelepon);
+                            System.out.println("Tanggal Keberangkatan\t: " + tanggalKeberangkatan);
+                            System.out.println("Rute\t\t\t\t\t: " + jarakk + " -> " + jarak + "km");
+                            System.out.println("Jumlah Tiket\t\t\t: " + jumlahTiket);
+                            System.out.println("Total Harga\t\t\t\t: " + kursIndo.format(totalHarga));
+                            System.out.println("Diskon\t\t\t\t\t: " + kursIndo.format(diskon));
+                            System.out.println("Nominal Pembayaran\t\t: " + kursIndo.format(nominalPembayaran));
+                            System.out.println("Kembalian\t\t\t\t: " + kursIndo.format(Math.abs(kembalian)));
+                            System.out.println("--------------------------------------------------");
+                            System.out.println("Tiket ini dicetak pada " + currentDateStr);
+                            System.out.println("==================================================");
 
-                        //Program Output Tiket
-                        System.out.println("==================================================");
-                        System.out.println("                 DETAIL PEMESANAN                 ");
-                        System.out.println("==================================================");
-                        System.out.printf("%s %s\n", "ID\t\t\t\t\t\t:", kodeSA + "-" + kodeST + kodeTiket + kodeNIK + kodeJTiket);
-                        System.out.println("Nama\t\t\t\t\t: " + nama);
-                        System.out.println("KTP\t\t\t\t\t\t: " + nomorKTP);
-                        System.out.println("Alamat\t\t\t\t\t: " + alamat);
-                        System.out.println("Nomor Telepon\t\t\t: " + nomorTelepon);
-                        System.out.println("Tanggal Keberangkatan\t: " + tanggalKeberangkatan);
-                        System.out.println("Rute\t\t\t\t\t: " + jarakk + " -> " + jarak + "km");
-                        System.out.println("Jumlah Tiket\t\t\t: " + jumlahTiket);
-                        System.out.println("Total Harga\t\t\t\t: " + kursIndo.format(totalHarga));
-                        System.out.println("Diskon\t\t\t\t\t: " + kursIndo.format(diskon));
-                        System.out.println("Nominal Pembayaran\t\t: " + kursIndo.format(nominalPembayaran));
-                        System.out.println("Kembalian\t\t\t\t: " + kursIndo.format(Math.abs(kembalian)));
-                        System.out.println("--------------------------------------------------");
-                        System.out.println("Tiket ini dicetak pada " + currentDateStr);
-                        System.out.println("==================================================");
+                            System.out.println("Selamat menikmati perjalanan anda\uD83E\uDD70");
 
-                        System.out.println("Selamat menikmati perjalanan anda\uD83E\uDD70");
+                            System.out.println("==================================================");
 
-                        System.out.println("==================================================");
-
-                    } else {
-                        System.out.println("Mohon maaf anda telah melakukan banyak kesalahan");
-                        System.out.println("Silahkan memulai dari awal lagi");
-                                Menu1();
+                        }
                     }
 
-                }
-            }
+                } while (nominalPembayaran <= (totalHarga - diskon));
         }
 
-        String kodePesanan = kodeSA + "-" + kodeST + kodeTiket + kodeNIK + kodeJTiket;
+
+
+
         String rute = jarakk + " -> " + jarak + "km";
         String pesanan = kodePesanan + ";" + tanggalKeberangkatan + ";" + nomorKTP + ";" + nama + ";" + rute + ";" + tanggalKeberangkatan
                 + ";" + jenisTiket + ";" + jumlahTiket;
