@@ -153,13 +153,14 @@ public class StudiKasus36 {
             default -> {
             }
         }
-
+        do {
             switch (jenisTiket) {
+
                 case "Hijau" -> kodeTiket = "01";
                 case "Kuning" -> kodeTiket = "02";
                 case "Merah" -> kodeTiket = "03";
-                default -> {
-                    do {
+                    default -> {
+
                         System.out.println("Mohon maaf, jenis tiket " + jenisTiket + " tidak tersedia");
                         System.out.println("1. Membatalkan pesanan");
                         System.out.println("2. Memasukkan ulang jenis tiket");
@@ -178,9 +179,12 @@ public class StudiKasus36 {
                                 }
                             }
                         }
-                    }while (jenisTiket.equals("Hijau|Kuning|Merah"));
+
+                    }
+
             }
-        }
+        }while (!jenisTiket.equals("Hijau") && !jenisTiket.equals("Kuning") && !jenisTiket.equals("Merah"));
+
 
         if (jumlahTiket < 10) {
             kodeJTiket = "00" + jumlahTiket;
