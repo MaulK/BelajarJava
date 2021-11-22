@@ -2,7 +2,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 import java.util.Scanner;
 
 /** Program FILKOM EXPRESS
@@ -11,10 +10,15 @@ import java.util.Scanner;
  * Kelas : B
  */
 public class StudiKasus36 {
-    static Scanner input = new Scanner(System.in);
     static int maxCounter = 5;
     static String[] tickets = new String[maxCounter];
     static int counter = 0;
+    //sistem waktu
+    static LocalDateTime currentDate = LocalDateTime.now();
+    //sistem uang
+    static DecimalFormat kursIndo = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+
+
 
     public static void main(String[] args) {
         MenuUtama();
@@ -23,6 +27,7 @@ public class StudiKasus36 {
 
     static void MenuUtama() {
         int pilihan;
+        Scanner input = new Scanner(System.in);
 
         do {
             System.out.println("==================================================");
@@ -58,7 +63,6 @@ public class StudiKasus36 {
         String kodeSA = null;
         String kodeST = null;
         String kodeTiket = null;
-        String nonValid = null;
 
         int jumlahTiket, totalHarga, kembalian;
         int nominalPembayaran;
@@ -67,15 +71,13 @@ public class StudiKasus36 {
         int hargaTiket = 0;
 
 
-
+        Scanner input = new Scanner(System.in);
         //Sistem waktu
-        LocalDateTime currentDate = LocalDateTime.now();
 
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String currentDateStr = currentDate.format(dateFormatter);
 
         //format mata uang Rupiah Indonesia
-        DecimalFormat kursIndo = (DecimalFormat) DecimalFormat.getCurrencyInstance();
         DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
 
         formatRp.setCurrencySymbol("Rp. ");
@@ -136,7 +138,8 @@ public class StudiKasus36 {
               case "Semarang" -> kodeSA = "SMR";
               case "Yogyakarta" -> kodeSA = "YOG";
               case "Serang" -> kodeSA = "SRG";
-              default -> nonValid = "1";
+              default -> {
+              }
           }
 
           switch (stasiunTujuan) {
@@ -147,14 +150,16 @@ public class StudiKasus36 {
               case "Semarang" -> kodeST = "SMR";
               case "Yogyakarta" -> kodeST = "YOG";
               case "Serang" -> kodeST = "SRG";
-              default -> nonValid = "1";
+              default -> {
+              }
           }
 
           switch (jenisTiket) {
               case "Hijau" -> kodeTiket = "01";
               case "Kuning" -> kodeTiket = "02";
               case "Merah" -> kodeTiket = "03";
-              default -> nonValid = "1";
+              default -> {
+              }
           }
 
         if (jumlahTiket < 10) {
@@ -213,8 +218,8 @@ public class StudiKasus36 {
                 diskon = totalHarga * 20 / 100;
             } else {
                 diskon = totalHarga * 5 / 100;
-
             }
+
         } else if (jenisTiket.equalsIgnoreCase("Merah")) {
             if (jarak > 700) {
                 diskon = totalHarga * 30 / 100;
@@ -226,10 +231,11 @@ public class StudiKasus36 {
                 diskon = totalHarga * 5 / 100;
             }
         }
+
         int hargaSebenarnya = (totalHarga - diskon);
         kembalian = nominalPembayaran - hargaSebenarnya;
 
-        if (nominalPembayaran >= hargaSebenarnya && !Objects.equals(nonValid, "1")) {
+        if (nominalPembayaran >= (totalHarga - diskon)) {
             System.out.println("Pemesanan Tiket Berhasil !");
 
             //Program Output Tiket
@@ -257,6 +263,7 @@ public class StudiKasus36 {
             System.out.println("==================================================");
 
         } else {
+
             //Program uang tidak cukup
             System.out.println("Maaf, uang Anda tidak mencukupi untuk melakukan pembayaran sebesar " + kursIndo.format(Math.abs(kembalian)) + "!");
             System.out.println("1. Membatalkan pesanan");
@@ -266,10 +273,11 @@ public class StudiKasus36 {
             switch (pilihanGagalBayar) {
                 case 1 -> MenuUtama();
                 case 2 -> {
-                    System.out.print("Nominal Pembayaran\t\t:");
-                    nominalPembayaran = input.nextInt();
-                    kembalian = nominalPembayaran - (totalHarga - diskon);
-                    if (nominalPembayaran >= (totalHarga - diskon) && !Objects.equals(nonValid, "1")) {
+                        System.out.print("Nominal Pembayaran\t\t:");
+                        nominalPembayaran = input.nextInt();
+                        kembalian = nominalPembayaran - (totalHarga - diskon);
+
+                    if (nominalPembayaran >= (totalHarga - diskon)) {
                         System.out.println("Pemesanan Tiket Berhasil !");
 
                         //Program Output Tiket
@@ -297,9 +305,11 @@ public class StudiKasus36 {
                         System.out.println("==================================================");
 
                     } else {
-                        System.out.println("Mohon untuk mengulangi lagi!");
-                        Menu1();
+                        System.out.println("Mohon maaf anda telah melakukan banyak kesalahan");
+                        System.out.println("Silahkan memulai dari awal lagi");
+                                Menu1();
                     }
+
                 }
             }
         }
@@ -312,8 +322,6 @@ public class StudiKasus36 {
             counter = 0;
         }
         tickets[counter++] = pesanan;
-
-
     }
 
     public static void Menu2() {
@@ -341,6 +349,7 @@ public class StudiKasus36 {
     }
 
     public static void Menu5() {
+        Scanner input = new Scanner(System.in);
         System.out.println("--------------------------------------------------");
         System.out.println("Cek Pemesanan Tiket");
         System.out.println("--------------------------------------------------");
