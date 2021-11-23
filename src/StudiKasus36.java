@@ -384,12 +384,12 @@ public class StudiKasus36 {
                     System.out.println("                 DETAIL PEMESANAN                 ");
                     System.out.println("==================================================");
                     System.out.println("Id Pesanan\t\t\t: " + detailTicket[0]);
-                    System.out.println("Nomor KTP: " + detailTicket[2]);
-                    System.out.println("Nama Pemesan: " + detailTicket[3]);
-                    System.out.println("Rute: " + detailTicket[4]);
-                    System.out.println("Tanggal Keberangkatan: " + detailTicket[5]);
-                    System.out.println("Jenis Tiket: " + detailTicket[6]);
-                    System.out.println("Jumlah Tiket " + detailTicket[7]);
+                    System.out.println("Nomor KTP\t\t\t: " + detailTicket[2]);
+                    System.out.println("Nama Pemesan\t\t: " + detailTicket[3]);
+                    System.out.println("Rute\t\t\t\t\t: " + detailTicket[4]);
+                    System.out.println("Tanggal Keberangkatan\t: " + detailTicket[5]);
+                    System.out.println("Jenis Tiket\t\t\t: " + detailTicket[6]);
+                    System.out.println("Jumlah Tiket\t\t\t: " + detailTicket[7]);
                     System.out.println("==================================================");
 
                 } else {
