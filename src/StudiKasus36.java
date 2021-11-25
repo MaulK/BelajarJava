@@ -25,6 +25,7 @@ public class StudiKasus36 {
     }
     //Beberapa Method untuk Menu
 
+    //Method berisi MenuUtama
     static void MenuUtama() {
         int pilihan;
         Scanner input = new Scanner(System.in);
@@ -56,9 +57,17 @@ public class StudiKasus36 {
             }
         } while (pilihan != 6);
     }
-
+    //Method berisi Menu1
     public static void Menu1() {
-        String nama, nomorKTP, nomorTelepon, alamat, tanggalKeberangkatan, stasiunAsal, stasiunTujuan, jenisTiket, kodeJTiket;
+        String nama;
+        String nomorKTP;
+        String nomorTelepon;
+        String alamat;
+        String tanggalKeberangkatan;
+        String stasiunAsal;
+        String stasiunTujuan;
+        String jenisTiket;
+        String kodeJTiket;
         String kodeNIK;
         String kodeSA = null;
         String kodeST = null;
@@ -186,16 +195,20 @@ public class StudiKasus36 {
         }while (!jenisTiket.equals("Hijau") && !jenisTiket.equals("Kuning") && !jenisTiket.equals("Merah"));
 
 
+
+        //sistem penomoran jumlah tiket
         if (jumlahTiket < 10) {
             kodeJTiket = "00" + jumlahTiket;
+        }else if (jumlahTiket >99){
+            kodeJTiket = "" + jumlahTiket;
         } else {
             kodeJTiket = "0" + jumlahTiket;
         }
 
 
         int malang = 0, sura = 100, yogya = 400, semarang = 450, bandung = 800, jakarta = 900, serang = 1000;
-        int stasiun1, stasiun2;
-        stasiun1 = switch (stasiunAsal) {
+
+        int stasiun1 = switch (stasiunAsal) {
             case "Malang" -> malang;
             case "Surabaya" -> sura;
             case "Yogyakarta" -> yogya;
@@ -206,7 +219,7 @@ public class StudiKasus36 {
             default -> 0;
         };
 
-        stasiun2 = switch (stasiunTujuan) {
+        int stasiun2 = switch (stasiunTujuan) {
             case "Malang" -> malang;
             case "Surabaya" -> sura;
             case "Yogyakarta" -> yogya;
@@ -219,6 +232,7 @@ public class StudiKasus36 {
         String jarakk = stasiunAsal + "-" + stasiunTujuan;
         jarak = Math.abs(stasiun2 - stasiun1);
         //program jenis tiket
+
         switch (jenisTiket) {
             case "Hijau" -> hargaTiket = (4400 / 10) * jarak;
             case "Kuning" -> hargaTiket = (7100 / 10) * jarak;
@@ -343,6 +357,7 @@ public class StudiKasus36 {
         tickets[counter++] = pesanan;
     }
 
+    //Method berisi Menu2
     public static void Menu2() {
         System.out.println("List Stasiun yang Tersedia:");
         System.out.printf("%-16s %-15s %-9s\n ", " 1. Malang", "4. Semarang", "7. Serang");
@@ -350,11 +365,13 @@ public class StudiKasus36 {
         System.out.printf("%-15s %-16s\n ", "3. Yogyakarta", "6. Jakarta");
     }
 
+    //Method berisi Menu3
     public static void Menu3() {
         System.out.println("Jenis Tiket:");
         System.out.printf("%18s %19s %20s\n", "1.Hijau (Ekonomi)", "2.Kuning (Premium)", "3.Merah (Eksklusif)");
     }
 
+    //Method berisi Menu4
     public static void Menu4() {
         System.out.println("--------------------------------------------------");
         System.out.println("Riwayat Pemesanan Tiket");
@@ -367,6 +384,7 @@ public class StudiKasus36 {
         }
     }
 
+    //Method berisi Menu5
     public static void Menu5() {
         Scanner input = new Scanner(System.in);
         System.out.println("--------------------------------------------------");
@@ -383,12 +401,12 @@ public class StudiKasus36 {
                     System.out.println("==================================================");
                     System.out.println("                 DETAIL PEMESANAN                 ");
                     System.out.println("==================================================");
-                    System.out.println("Id Pesanan\t\t\t: " + detailTicket[0]);
-                    System.out.println("Nomor KTP\t\t\t: " + detailTicket[2]);
-                    System.out.println("Nama Pemesan\t\t: " + detailTicket[3]);
+                    System.out.println("Id Pesanan\t\t\t\t: " + detailTicket[0]);
+                    System.out.println("Nomor KTP\t\t\t\t: " + detailTicket[2]);
+                    System.out.println("Nama Pemesan\t\t\t: " + detailTicket[3]);
                     System.out.println("Rute\t\t\t\t\t: " + detailTicket[4]);
                     System.out.println("Tanggal Keberangkatan\t: " + detailTicket[5]);
-                    System.out.println("Jenis Tiket\t\t\t: " + detailTicket[6]);
+                    System.out.println("Jenis Tiket\t\t\t\t: " + detailTicket[6]);
                     System.out.println("Jumlah Tiket\t\t\t: " + detailTicket[7]);
                     System.out.println("==================================================");
 
